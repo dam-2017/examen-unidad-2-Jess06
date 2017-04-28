@@ -1,0 +1,53 @@
+<!--
+  Generated template for the Form page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Form</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <p style="text-align:center">jelipardope</p>
+  <form action="" [formGroup]="rfcForm" (ngSubmit)="generateRFC()">
+    <ion-list no-lines>
+         <ion-item>
+               <ion-input type="text" placeholder="Nombre"
+               [(ngModel)]="user.firstName" formControlName="firstName"></ion-input>
+         </ion-item>
+         <ion-item *ngIf="nameE || rfcForm.get('firstName').hasError('required') && rfcForm.get('firstName').touched"> 
+               <p *ngIf="rfcForm.get('firstName').hasError('required')">El nombre es requerido</p> 
+         </ion-item>
+         <ion-item>
+               <ion-input type="text" placeholder="Apellido paterno"
+               [(ngModel)]="user.lastNameP" formControlName="lastNameP"></ion-input>
+         </ion-item>
+         <ion-item *ngIf="lastNPE || rfcForm.get('lastNameP').hasError('required') && rfcForm.get('lastNameP').touched"> 
+               <p *ngIf="rfcForm.get('lastNameP').hasError('required')">El apellido paterno es requerido</p> 
+         </ion-item>
+         <ion-item>
+               <ion-input type="text" placeholder="Apellido materno"
+               [(ngModel)]="user.lastNameM" formControlName="lastNameM"></ion-input>
+         </ion-item>
+         <ion-item *ngIf="lastNME || rfcForm.get('lastNameM').hasError('required') && rfcForm.get('lastNameM').touched"> 
+               <p *ngIf="rfcForm.get('lastNameM').hasError('required')">El apellido materno es requerido</p> 
+         </ion-item>
+         <ion-item>
+               <ion-input type="text" placeholder="Fecha de nacimiento YYYY/MM/dd"
+               [(ngModel)]="user.birth" formControlName="birth"></ion-input>
+         </ion-item>
+         <ion-item *ngIf="birthE || rfcForm.get('birth').hasError('required') && rfcForm.get('birth').touched || rfcForm.get('birth').hasError('pattern')"> 
+               <p *ngIf="rfcForm.get('birth').hasError('required')">La fecha es requerida</p> 
+               <p *ngIf="rfcForm.get('birth').hasError('pattern')">Formato incorrecto en la fecha</p> 
+         </ion-item>
+         <button ion-button block type="submit">Generar RFC</button>
+    </ion-list>
+    <p style="text-align:center">{{rfc}}</p>
+  </form>
+</ion-content>
